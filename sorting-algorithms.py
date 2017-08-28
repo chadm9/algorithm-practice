@@ -30,21 +30,32 @@ for i in range(len(lyst) - 1):
 print bubbleSort(lyst)
 
 
- lyst = [2,6,8,2,3,9,7,0,1,3]
+lyst = [2,6,8,2,3,9,7,0,1,3]
 
- def insertionSort(lyst):
-     for i in range(1, len(lyst)-1):
 
-         for j in range(i-1, -1, -1):
-             if lyst[i] > lyst[j]:
-                 pass
-             elif lyst[i] <= lyst[j]:
-                 temp_var = lyst.pop(i)
-                 lyst.insert(j-1,temp_var)
-         print lyst
+def quicksort(x):
+    if len(x) == 1 or len(x) == 0:
+        return x
+    else:
+        pivot = x[0]
+        i = 0
+        for j in range(len(x) - 1):
+            if x[j + 1] < pivot:
+                x[j + 1], x[i + 1] = x[i + 1], x[j + 1]
+                i += 1
+        x[0], x[i] = x[i], x[0]
+        first_part = quicksort(x[:i])
+        second_part = quicksort(x[i + 1:])
+        first_part.append(x[i])
+        return first_part + second_part
 
-     return lyst
 
- print insertionSort(lyst)
+alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
+
+print quicksort(alist)
+print(alist)
+
+
+
 
 
